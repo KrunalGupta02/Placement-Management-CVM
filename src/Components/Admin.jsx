@@ -63,10 +63,16 @@ export const Admin = () => {
     console.log("hi", approvedUser[index].email);
 
     try {
-      //   await addDoc(collection(db, "approvedUser"), {
-      //     email: approvedUser[index].email,
-      //     password: approvedUser[index].password,
-      //   });
+      await addDoc(collection(db, "approvedUser"), {
+        email: approvedUser[index].email,
+        password: approvedUser[index].password,
+        name: approvedUser[index].name,
+        batch: approvedUser[index].batch,
+        cgpa: approvedUser[index].cgpa,
+        branch: approvedUser[index].branch,
+        file: approvedUser[index].file,
+        skills: approvedUser[index].skills,
+      });
 
       await createUserWithEmailAndPassword(
         auth,

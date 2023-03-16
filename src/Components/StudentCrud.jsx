@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-
-import { db } from "../../firebase";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
+import React, { useState, useEffect } from "react";
+import { Table, Button, Col, Form, Row, FloatingLabel } from "react-bootstrap";
 
 import {
   collection,
@@ -12,48 +10,15 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { db } from "../../firebase";
 
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import Row from "react-bootstrap/Row";
-
-export const Signin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [branch, setBranch] = useState("");
-  const [batch, setBatch] = useState("");
-  const [cgpa, setCgpa] = useState("");
-  const [skills, setSkills] = useState("");
-  const [file, setFile] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const user = await addDoc(collection(db, "user"), {
-        email: email,
-        password: password,
-        name: name,
-        branch: branch,
-        batch: batch,
-        cgpa: cgpa,
-        skills: skills,
-        file: file,
-      });
-      console.log(user.id);
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
-
+export const StudentCrud = () => {
   return (
     <div>
       <div className="p-4 box">
-        <h2 className="mb-3">Student SignUp Form</h2>
+        <h2 className="mb-3">Edit Profile</h2>
 
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <Row className="mb-3">
             <FloatingLabel as={Col} controlId="floatingEmail" label="Email">
               <Form.Control
@@ -61,6 +26,7 @@ export const Signin = () => {
                 placeholder="Enter your Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
 
             <FloatingLabel
@@ -73,6 +39,7 @@ export const Signin = () => {
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
 
             <FloatingLabel as={Col} controlId="floatingName" label="Name">
@@ -81,32 +48,39 @@ export const Signin = () => {
                 placeholder="Enter your Name"
                 onChange={(e) => setName(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
           </Row>
 
           <Row className="mb-3">
-            <FloatingLabel as={Col} controlId="floatingBranch" label="Branch">
+            <FloatingLabel as={Col} controlId="formFileDisabled" label="Branch">
               <Form.Control
                 type="text"
+                disabled
                 placeholder="Enter your Branch"
                 onChange={(e) => setBranch(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
 
-            <FloatingLabel as={Col} controlId="floatingBatch" label="Batch">
+            <FloatingLabel as={Col} controlId="formFileDisabled" label="Batch">
               <Form.Control
                 type="number"
+                disabled
                 placeholder="Enter your Batch"
                 onChange={(e) => setBatch(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
 
-            <FloatingLabel as={Col} controlId="floatingCgpa" label="CGPA">
+            <FloatingLabel as={Col} controlId="formFileDisabled" label="CGPA">
               <Form.Control
                 type="number"
+                disabled
                 placeholder="Enter your CGPA"
                 onChange={(e) => setCgpa(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
           </Row>
 
@@ -122,6 +96,7 @@ export const Signin = () => {
                 placeholder="Enter your Skills"
                 onChange={(e) => setSkills(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
 
             <FloatingLabel as={Col} controlId="floatingFile">
@@ -130,14 +105,13 @@ export const Signin = () => {
                 placeholder="Upload your resume here!"
                 onChange={(e) => setFile(e.target.value)}
               />
+              {/* <Button variant="danger">Edit</Button> */}
             </FloatingLabel>
           </Row>
-
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
-              Sign Up
-            </Button>
-          </div>
+          <Button className="mx-3" variant="dark">
+            Edit
+          </Button>
+          <Button variant="primary">Submit</Button>
         </Form>
         <hr />
       </div>

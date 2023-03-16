@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import ListItems from "./list";
+import ListItems from "./List";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export default function SideBar() {
+export default function Sidebar() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -12,7 +12,7 @@ export default function SideBar() {
 
   return (
     <>
-      <Button variant="light" onClick={handleShow}>
+      <Button variant="primary" onClick={handleShow}>
         <GiHamburgerMenu />
       </Button>
 
