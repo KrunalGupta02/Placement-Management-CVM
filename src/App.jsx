@@ -10,17 +10,13 @@ import { StudentCrud } from "./Components/StudentCrud";
 import AddRecruiter from "./Components/AddRecruiter";
 import Companydetails from "./Components/companydetails";
 import { useState } from "react";
+import { Home } from "./Components/Home";
+import { AdminLogin } from "./Components/AdminLogin";
 
 function App() {
-  const [approvedId, setApprovedId] = useState("");
-
-  const getApprovedIdHandler = (id) => {
-    console.log("Id of doc to be edited", id);
-    setApprovedId("id", id);
-  };
   return (
     <div className="App">
-      <Companydetails />
+      <AdminLogin />
     </div>
   );
 }
