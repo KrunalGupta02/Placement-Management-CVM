@@ -11,10 +11,12 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import NavbarStudent from "./NavbarStudent";
 
 export const StudentCrud = () => {
   return (
     <div>
+      <NavbarStudent />
       <div className="p-4 box">
         <h2 className="mb-3">Edit Profile</h2>
 

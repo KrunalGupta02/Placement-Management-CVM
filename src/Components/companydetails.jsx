@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase.js";
+import NavbarStudent from "./NavbarStudent.jsx";
 
 export default function CompanyDetails() {
   const [company, setCompany] = useState([]);
@@ -29,7 +30,10 @@ export default function CompanyDetails() {
 
   return (
     <div>
-      <Button onClick={getComapny}>Refresh</Button>
+      <NavbarStudent />
+      <Button className="m-3" onClick={getComapny}>
+        Refresh
+      </Button>
       {company.map((doc, index) => {
         console.log(doc);
         return (

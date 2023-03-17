@@ -6,7 +6,6 @@ import { Admin } from "./Admin";
 export default function AdminMain() {
   return (
     <>
-      <CollapsibleExample />
       <Admin />
     </>
   );

@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   collection,
   getDocs,
@@ -29,10 +31,13 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/studentmain");
       console.log("LoggedIn");
     } catch (e) {
       console.log(e.message);
@@ -60,6 +65,10 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
+
+          <div className="p-4 box mt-3 text-center">
+            Don't have an account? <Link to="/signin">Sign in</Link>
+          </div>
 
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">

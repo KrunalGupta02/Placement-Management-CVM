@@ -25,6 +25,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import CollapsibleExample from "./Navbar";
 
 export const Admin = () => {
   const userRef = collection(db, "user");
@@ -86,6 +87,7 @@ export const Admin = () => {
 
   return (
     <>
+      <CollapsibleExample />
       <div className="mb-2">
         <Button variant="dark edit" onClick={getUser}>
           Refresh List

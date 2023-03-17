@@ -11,10 +11,20 @@ body {
   display: flex;
   flex-direction: column;
 }
+.img-container {
+  width: 100vw;
+}
+
+img {
+  width: 100%;
+  background-position: center;
+  background-size: contain;
+}
+
 .button {
   margin: 1rem;
   padding: 1rem;
-  background-color: #0d6efd;
+  /* background-color: #0d6efd; */
   color: white;
   border: none;
   font-size: 20px;
@@ -24,5 +34,6 @@ body {
   width: 400px;
 }
 .button:hover {
-  background-color: #0816d1;
+  background-color: black;
+  color: white;
 }

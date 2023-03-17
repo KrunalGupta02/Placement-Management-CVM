@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
 import img from "../assest/The-ultimate-guide-to-Placement-Management-system.jpg";
 import App from "../App.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -12,8 +13,12 @@ export const Home = () => {
       </div>
 
       <div className="button-container">
-        <button className="button">Admin</button>
-        <button className="button">Student</button>
+        <button className="button">
+          <Link to="/adminlogin">Admin</Link>
+        </button>
+        <button className="button">
+          <Link to="/signin">Student</Link>
+        </button>
       </div>
     </div>
   );

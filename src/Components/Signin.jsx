@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { db } from "../../firebase";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   collection,
@@ -132,6 +133,9 @@ export const Signin = () => {
               />
             </FloatingLabel>
           </Row>
+          <div className="mt-3 mb-3 text-center">
+            Already have account ? <Link to="/login">Login</Link>
+          </div>
 
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">

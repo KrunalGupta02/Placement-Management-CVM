@@ -4,24 +4,26 @@ import { GrValidate } from "react-icons/gr";
 import { BsFillBuildingFill } from "react-icons/bs";
 import { GrHostMaintenance } from "react-icons/gr";
 
+import { Link, useNavigate } from "react-router-dom";
+
 export default function ListItems() {
   return (
     <ListGroup variant="flush">
       <ListGroup.Item>
         <FaTachometerAlt />
-        Dashboard
+        <Link to="/adminmain">Dashboard</Link>
       </ListGroup.Item>
       <ListGroup.Item>
         <GrValidate />
-        Student approval
+        <Link to="/approval">Student Approval</Link>
       </ListGroup.Item>
       <ListGroup.Item>
         <BsFillBuildingFill />
-        Add company
+        <Link to="/addrecruiter">Add Recruiter</Link>
       </ListGroup.Item>
       <ListGroup.Item>
         <GrHostMaintenance />
-        Maintain record yearwise
+        <Link to="/companydetails">Record of placement</Link>
       </ListGroup.Item>
     </ListGroup>
   );
