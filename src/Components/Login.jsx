@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import { db } from "../../firebase";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -34,15 +35,21 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/studentmain");
-      console.log("LoggedIn");
-    } catch (e) {
-      console.log(e.message);
-    }
+    await signInWithEmailAndPassword(auth, email, password);
+
+    console.log("LoggedIn");
+
+    console.log(email);
   };
+
+  async function Submit() {
+    await signInWithEmailAndPassword(auth, email, password);
+    const docRef = doc(db, "students", "recent");
+    await updateDoc(docRef, {
+      email: email,
+    });
+    navigate("/studentcrud");
+  }
 
   return (
     <div>
@@ -66,13 +73,20 @@ export const Login = () => {
             />
           </Form.Group>
 
-          <div className="p-4 box mt-3 text-center">
+          {/* <div className="p-4 box mt-3 text-center">
             Don't have an account? <Link to="/signin">Sign in</Link>
-          </div>
+          </div> */}
 
           <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
-              Sign Up
+            <Button variant="primary" onClick={Submit}>
+              Sign In
+            </Button>
+          </div>
+          <div className="d-grid gap-2">
+            <Button variant="success" className="mt-3">
+              <Link className="link " to="/phonesignup">
+                Login in with Otp
+              </Link>
             </Button>
           </div>
         </Form>

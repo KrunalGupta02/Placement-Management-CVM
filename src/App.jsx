@@ -3,10 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { Signin } from "./Components/Signin";
 import { Admin } from "./Components/Admin";
-import { Login } from "./Components/Login";
 import Navbar from "./Components/Navbar";
 import AdminMain from "./Components/AdminMain";
-import { StudentMain } from "./Components/StudentMain";
+import StudentMain from "./Components/StudentMain";
 import { StudentCrud } from "./Components/StudentCrud";
 import AddRecruiter from "./Components/AddRecruiter";
 import Companydetails from "./Components/companydetails";
@@ -15,6 +14,9 @@ import { AdminLogin } from "./Components/AdminLogin";
 import ListItems from "./Components/List";
 import { Routes, Route } from "react-router-dom";
 import ListStudent from "./Components/ListStudent";
+import { PhoneSignUp } from "./Components/PhoneSignUp";
+import { Login } from "./Components/Login";
+import Records from "./Components/Records";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/addrecruiter" element={<AddRecruiter />} />
         <Route path="/companydetails" element={<Companydetails />} />
         <Route path="/studentcrud" element={<StudentCrud />} />
+        <Route path="/phonesignup" element={<PhoneSignUp />} />
+        <Route path="/records" element={<Records />} />
       </Routes>
     </div>
   );

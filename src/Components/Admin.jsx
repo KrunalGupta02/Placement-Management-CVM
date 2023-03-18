@@ -24,6 +24,7 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  setDoc,
 } from "firebase/firestore";
 import CollapsibleExample from "./Navbar";
 
@@ -64,7 +65,7 @@ export const Admin = () => {
     console.log("hi", approvedUser[index].email);
 
     try {
-      await addDoc(collection(db, "approvedUser"), {
+      await setDoc(doc(db, "approvedUser", approvedUser[index].email), {
         email: approvedUser[index].email,
         password: approvedUser[index].password,
         name: approvedUser[index].name,

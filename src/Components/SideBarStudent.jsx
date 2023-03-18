@@ -19,7 +19,7 @@ export default function SideBarStudent() {
 
       <Offcanvas show={show} onHide={handleClose} backdrop="static">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="sidebar-title">Admin</Offcanvas.Title>
+          <Offcanvas.Title className="sidebar-title">Student</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ListStudent />

@@ -19,12 +19,12 @@ export default function ListStudent() {
       </ListGroup.Item>
       <ListGroup.Item>
         <BsFillBuildingFill />
-        <Link to="/addrecruiter">Add Recruiter</Link>
+        <Link to="">Resources</Link>
       </ListGroup.Item>
-      <ListGroup.Item>
+      {/* <ListGroup.Item>
         <GrHostMaintenance />
         <Link to="/companydetails">Record of placement</Link>
-      </ListGroup.Item>
+      </ListGroup.Item> */}
     </ListGroup>
   );
 }

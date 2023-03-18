@@ -14,6 +14,34 @@ import { db } from "../../firebase";
 import NavbarStudent from "./NavbarStudent";
 
 export const StudentCrud = () => {
+  const [state, setState] = useState("");
+  async function data() {
+    const docRef = doc(db, "students", "recent");
+    const docSnap = await getDoc(docRef);
+    const data = docSnap.data()["email"];
+    console.log(data);
+
+    const docRef1 = doc(db, "approvedUser", data);
+    const docSnap1 = await getDoc(docRef1);
+
+    if (docSnap1.exists()) {
+      setState(docSnap1.data());
+      console.log("Document data:", docSnap1.data());
+      console.log("hi", docSnap1.id);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
+  console.log("State : ", state);
+  // updateUser = (id, updateUser) => {
+  //   // Book is present in collection or not
+  //   const studentdoc = doc(db, "student", id);
+
+  //   // Update the book
+  //   return updateDoc(studentdoc, updateUser);
+  // };
+
   return (
     <div>
       <NavbarStudent />
@@ -117,6 +145,9 @@ export const StudentCrud = () => {
         </Form>
         <hr />
       </div>
+      <Button className="m-2" onClick={data}>
+        Refresh
+      </Button>
     </div>
   );
 };

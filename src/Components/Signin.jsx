@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { db } from "../../firebase";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import {
   collection,
@@ -11,6 +11,7 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  setDoc,
   doc,
 } from "firebase/firestore";
 
@@ -33,7 +34,8 @@ export const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await addDoc(collection(db, "user"), {
+      const userRef = doc(db, "approvedUser", email);
+      await setDoc(userRef, {
         email: email,
         password: password,
         name: name,
@@ -43,7 +45,8 @@ export const Signin = () => {
         skills: skills,
         file: file,
       });
-      console.log(user.id);
+      Navigate("/login");
+      console.log(userRef.id);
     } catch (e) {
       console.log(e.message);
     }
@@ -51,10 +54,10 @@ export const Signin = () => {
 
   return (
     <div>
-      <div className="p-4 box">
+      <div className="p-4 box student-signin">
         <h2 className="mb-3">Student SignUp Form</h2>
 
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="student-signin-form">
           <Row className="mb-3">
             <FloatingLabel as={Col} controlId="floatingEmail" label="Email">
               <Form.Control
@@ -76,6 +79,16 @@ export const Signin = () => {
               />
             </FloatingLabel>
 
+            <FloatingLabel as={Col} controlId="floatingId" label="Student Id">
+              <Form.Control
+                type="number"
+                placeholder="Enter your Student Id"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </FloatingLabel>
+          </Row>
+
+          <Row className="mb-3">
             <FloatingLabel as={Col} controlId="floatingName" label="Name">
               <Form.Control
                 type="text"
@@ -83,9 +96,7 @@ export const Signin = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </FloatingLabel>
-          </Row>
 
-          <Row className="mb-3">
             <FloatingLabel as={Col} controlId="floatingBranch" label="Branch">
               <Form.Control
                 type="text"
@@ -101,7 +112,9 @@ export const Signin = () => {
                 onChange={(e) => setBatch(e.target.value)}
               />
             </FloatingLabel>
+          </Row>
 
+          <Row className="mb-3">
             <FloatingLabel as={Col} controlId="floatingCgpa" label="CGPA">
               <Form.Control
                 type="number"
@@ -109,9 +122,7 @@ export const Signin = () => {
                 onChange={(e) => setCgpa(e.target.value)}
               />
             </FloatingLabel>
-          </Row>
 
-          <Row className="mb-3">
             <FloatingLabel
               as={Col}
               controlId="floatingTextarea"
@@ -138,7 +149,7 @@ export const Signin = () => {
           </div>
 
           <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
+            <Button variant="primary" onClick={handleSubmit}>
               Sign Up
             </Button>
           </div>

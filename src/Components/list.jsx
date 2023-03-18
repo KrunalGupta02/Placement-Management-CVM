@@ -23,7 +23,7 @@ export default function ListItems() {
       </ListGroup.Item>
       <ListGroup.Item>
         <GrHostMaintenance />
-        <Link to="/companydetails">Record of placement</Link>
+        <Link to="/records">Record of placement</Link>
       </ListGroup.Item>
     </ListGroup>
   );

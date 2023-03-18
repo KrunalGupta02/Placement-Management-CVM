@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
+import { Link, Navigate, useNavigate } from "react-router-dom";
+
 import {
   collection,
   getDocs,
@@ -24,6 +26,7 @@ import {
   signInWithRedirect,
   GoogleAuthProvider,
 } from "firebase/auth";
+import CollapsibleExample from "./Navbar";
 
 export const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -34,17 +37,19 @@ export const AdminLogin = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("LoggedIn");
+
+      Navigate("/adminmain");
     } catch (e) {
       console.log(e.message);
     }
   };
 
   return (
-    <div>
-      <div className="p-4 box">
-        <h2 className="mb-3">Admin Login</h2>
+    <div className="admin-login">
+      <div className="position-absolute top-50 start-50 translate-middle mt-10 admin-login-form">
+        <h2 className="admin-login-title">Admin Login</h2>
 
-        <Form onSubmit={handleSubmit}>
+        <Form className="admin-login-form" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               type="email"
@@ -63,11 +68,13 @@ export const AdminLogin = () => {
 
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">
-              Sign Up
+              <Link className="link" to="/adminmain">
+                Sign In
+              </Link>
             </Button>
           </div>
         </Form>
-        <hr />
+        {/* <hr /> */}
       </div>
     </div>
   );
